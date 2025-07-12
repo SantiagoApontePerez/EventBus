@@ -3,7 +3,7 @@
 An scriptable object event bus system with event bus station.
 
 # Features
-- AddListeners to an event.
+- Add listeners to an event.
 - Set or Get the event value.
 - Raise events.
 - Custom editor to view and raise events manually during runtime.
