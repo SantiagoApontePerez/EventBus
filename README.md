@@ -24,6 +24,8 @@ Simply download the library into your Unity project `Assets/` folder.
 
 ### EventBus Station
 
+<img width="496" height="285" alt="image" src="https://github.com/user-attachments/assets/94989a04-bef2-4235-8da5-d665bc6cd9a7" />
+
 1. View all currently registered events.
 2. View the last time an event was raised.
 3. Manually raise an event with value.
