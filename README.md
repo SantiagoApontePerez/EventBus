@@ -28,7 +28,7 @@ Simply download the library into your Unity project `Assets/` folder.
 3. Manually raise an event with value.
 
 ### EventBus Events & Binding
-`
+```
 public IntBusEvent intBusEvent;
 
 private void Start()
@@ -37,4 +37,4 @@ private void Start()
 	intBusEvent.SetValue(33);
 	intBusEvent.Raise
 }
-`
+```
