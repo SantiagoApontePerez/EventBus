@@ -1,12 +1,12 @@
 # Scritable Object Event Bus
 
-An scriptable object event bus system with event bus station.
+A lightweight, decoupled event system for Unity leveraging ScriptableObjects and inspector-friendly listeners.
 
 # Features
-- Add listeners to an event.
-- Set or Get the event value.
-- Raise events.
-- Custom editor to view and raise events manually during runtime.
+- **Generic Events**: Supports any type `T` (int, float, bool, string, custom structs, etc.).
+- **ScriptableObject Assets**: Create events via Unity’s `Create Asset` menu for drag-and-drop usage.
+- **Inspector Listeners**: Attach `EventListener` components to GameObjects and wire up UnityEvents in the Inspector—no code references required.
+- **Runtime Debugger Window**: Inspect all events, listener counts, registration times, and last invoke times.
 
 # Installation
 
@@ -22,56 +22,8 @@ Simply download the library into your Unity project `Assets/` folder.
 
 # Usage
 
-### EventBus Station
-
-<img width="496" height="285" alt="image" src="https://github.com/user-attachments/assets/94989a04-bef2-4235-8da5-d665bc6cd9a7" />
-
-1. View all currently registered events.
-2. View the last time an event was raised.
-3. Manually raise an event with value.
-
-### EventBus Events & Binding
-Setting, Getting, and raising an event.
-```
-public IntBusEvent intBusEvent;
-
-private void Start()
-{
-	//Sets the value before raising the event.
-	intBusEvent.SetValue(33);
-	
-	//Gets the value
-	var intValue = intBusEvent.GetValue;
-	
-	//Raises the event to all bindings
-	intBusEvent.Raise
-}
-```
-Binding and Listening.
-```
-public BoolBusBinding boolBusBinding;
-
-private void Awake()
-{
-    RegisterEvent();
-}
-
-//Register to event with or without params.
-private void RegisterEvent()
-{
-    boolBusBinding.AddListener(HandleBoolEvent);
-    boolBusBinding.AddListener(HandleEvent);
-}
-
-private void HandleBoolEvent(bool state)
-{
-    Debug.Log($"{this.name} BoolEventBusListener test: received event raised with value {state}");
-}
-
-private void HandleEvent()
-{
-    Debug.Log($"{this.name} BoolEventBusListener test: received event");
-}
-```
-
-
+### 1. Create an Event Asset
+1. In the Project window, right-click:  
+   **Create → EventBus → Events**  
+2. Name your event asset (e.g. `ScoreUpdated_IntEvent`).  
+3. Inspect the asset to see type information.
