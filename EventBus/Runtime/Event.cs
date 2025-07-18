@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Systems.EventBus.Interfaces;
+using EventBus.EventBus.Interfaces;
 using UnityEngine;
 
 namespace EventBus.EventBus.Runtime
@@ -33,9 +33,7 @@ namespace EventBus.EventBus.Runtime
 
         public void UnregisterListener(IEventListener<T> listener)
         {
-            if (!_registrationTimes.ContainsKey(listener)) return;
-            
-            _registrationTimes.Remove(listener);
+            if (!_registrationTimes.Remove(listener)) return;
             _lastInvokeTimes.Remove(listener);
         }
         

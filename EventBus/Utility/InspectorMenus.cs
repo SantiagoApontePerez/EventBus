@@ -1,4 +1,4 @@
-﻿namespace Systems.EventBus.Utility
+﻿namespace EventBus.EventBus.Utility
 {
     public static class InspectorMenus
     {

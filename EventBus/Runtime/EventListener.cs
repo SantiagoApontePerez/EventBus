@@ -1,12 +1,11 @@
-﻿using EventBus.Runtime;
-using Systems.EventBus.Interfaces;
+﻿using EventBus.EventBus.Interfaces;
 using UnityEngine;
 
 namespace EventBus.EventBus.Runtime
 {
-    public abstract class EventListener<T, E> : MonoBehaviour, IEventListener<T> where E : Event<T>
+    public abstract class EventListener<T, TE> : MonoBehaviour, IEventListener<T> where TE : Event<T>
     {
-        [SerializeField] private E gameEvent;
+        [SerializeField] private TE gameEvent;
 
         private void OnEnable()
         {

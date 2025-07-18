@@ -1,5 +1,4 @@
-﻿using EventBus.Runtime;
-using Systems.EventBus.Utility;
+﻿using EventBus.EventBus.Utility;
 using UnityEngine;
 
 namespace EventBus.EventBus.Runtime.Events

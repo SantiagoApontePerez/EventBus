@@ -1,6 +1,6 @@
-﻿namespace Systems.EventBus.Interfaces
+﻿namespace EventBus.EventBus.Interfaces
 {
-    public interface IEventListener<T>
+    public interface IEventListener<in T>
     {
         void OnEventRaised(T value);
     }

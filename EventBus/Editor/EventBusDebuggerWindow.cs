@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using EventBus.EventBus.Interfaces;
 using EventBus.EventBus.Runtime;
-using Systems.EventBus.Interfaces;
-using Systems.EventBus.Utility;
+using EventBus.EventBus.Utility;
 using UnityEditor;
 using UnityEngine;
 

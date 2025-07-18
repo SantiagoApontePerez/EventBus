@@ -1,9 +1,8 @@
-﻿using EventBus.EventBus.Runtime;
-using EventBus.EventBus.Runtime.Events;
+﻿using EventBus.EventBus.Runtime.Events;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace EventBus.Runtime.Listeners
+namespace EventBus.EventBus.Runtime.Listeners
 {
     public class FloatEventListener : EventListener<float, FloatEvent>
     {
