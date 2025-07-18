@@ -27,3 +27,5 @@ Simply download the library into your Unity project `Assets/` folder.
    **Create → EventBus → Events**  
 2. Name your event asset (e.g. `ScoreUpdated_IntEvent`).  
 3. Inspect the asset to see type information.
+
+<img width="259" height="43" alt="image" src="https://github.com/user-attachments/assets/905ea447-e98f-4ce5-b3d2-3a0b21c40e1b" />
