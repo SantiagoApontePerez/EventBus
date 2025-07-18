@@ -26,7 +26,52 @@ Simply download the library into your Unity project `Assets/` folder.
 
 1. In the Project window, right-click:  
    **Create → EventBus → Events**  
-2. Name your event asset (e.g. `ScoreUpdated_IntEvent`).  
+2. Name your event asset (e.g. `PlayerDied_BoolEvent`).  
 3. Inspect the asset to see type information.
 
 <img width="259" height="43" alt="image" src="https://github.com/user-attachments/assets/905ea447-e98f-4ce5-b3d2-3a0b21c40e1b" />
+
+### 2. Add a Listener Component
+
+1. On any GameObject, click **Add Component**:  
+   **Int Event Listener**  
+2. Assign your `PlayerDied_BoolEvent` asset to the field.  
+3. Click **+** on the UnityEvent to assign a receiver:  
+   - Drag the same GameObject (or another) into the slot.  
+   - Select a public method that takes an `bool`.
+
+<img width="414" height="169" alt="image" src="https://github.com/user-attachments/assets/b4c8cd97-9327-4a89-ab26-7f74c8a23873" />
+
+### 3. Raise Events in Code
+
+```csharp
+using UnityEngine;
+using Systems.EventBus.Runtime;
+
+public class ScoreManager : MonoBehaviour
+{
+    [SerializeField] private IntEvent scoreEvent;
+
+    void AddPoints(int points)
+    {
+        scoreEvent.Raise(points);
+    }
+}
+```
+# Debugging at Runtime
+
+**Window → EventBus → Event Debugger**
+
+<img width="405" height="287" alt="image" src="https://github.com/user-attachments/assets/fde3ac7e-8af3-4aa0-9559-51871beaa528" />
+
+The window lists each event asset with:
+
+- Last Raised By: Object name that last triggered the event.
+- Last Raised At: Timestamp (HH:mm:ss).
+- Raise Value: Input field and Raise button to manually trigger.
+- Listeners: Active listener count.
+- Listener Details:
+- Name: GameObject or custom listener description.
+- Registered: When the listener first subscribed.
+- Last Invoked: When it last received an event (or “Never”).
+- Select button: Jump to the listener in the Inspector.
