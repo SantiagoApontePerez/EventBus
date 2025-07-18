@@ -9,12 +9,12 @@ namespace EventBus.EventBus.Runtime
 
         private void OnEnable()
         {
-            if(gameEvent != null) gameEvent.RegisterListener(this);
+            if (gameEvent != null) gameEvent.RegisterListener(this);
         }
 
         private void OnDisable()
         {
-            if(gameEvent != null) gameEvent.UnregisterListener(this);
+            if (gameEvent != null) gameEvent.UnregisterListener(this);
         }
 
         public abstract void OnEventRaised(T value);

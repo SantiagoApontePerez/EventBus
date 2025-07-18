@@ -4,7 +4,9 @@ using UnityEngine;
 namespace EventBus.EventBus.Runtime.Events
 {
     [CreateAssetMenu(
-        fileName = "FloatEvent.asset", 
+        fileName = "FloatEvent.asset",
         menuName = InspectorMenus.EventMenu + "Float Event")]
-    public sealed class FloatEvent : Event<float> { }
+    public sealed class FloatEvent : Event<float>
+    {
+    }
 }

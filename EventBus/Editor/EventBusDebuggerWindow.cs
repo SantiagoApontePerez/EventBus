@@ -6,28 +6,16 @@ using EventBus.EventBus.Runtime;
 using EventBus.EventBus.Utility;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace EventBus.EventBus.Editor
 {
     public class EventBusDebuggerWindow : EditorWindow
     {
-        #region Fields
-        
-        private Vector2 _scrollPosition;
-        private int _intInput;
-        private float _floatInput;
-        private bool _boolInput;
-        private string _stringInput;
-
-        #endregion
-
-        [MenuItem("Window/EventBus/EventBus Debugger")]
-        public static void ShowWindow() => GetWindow<EventBusDebuggerWindow>("EventBus Debugger");
-
         private void OnGUI()
         {
             _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
-            
+
             var events = GetScriptableObjectEvents();
 
             foreach (var e in events)
@@ -36,11 +24,18 @@ namespace EventBus.EventBus.Editor
                 EditorGUILayout.LabelField(e.name, EditorStyles.boldLabel);
 
                 DrawSection(e);
-                
+
                 EditorGUILayout.EndVertical();
             }
+
             EditorGUILayout.EndScrollView();
             DrawHelpBox();
+        }
+
+        [MenuItem("Window/EventBus/EventBus Debugger")]
+        public static void ShowWindow()
+        {
+            GetWindow<EventBusDebuggerWindow>("EventBus Debugger");
         }
 
         private static void DrawHelpBox()
@@ -48,9 +43,9 @@ namespace EventBus.EventBus.Editor
             EditorGUILayout.HelpBox(
                 "To begin, create an event/s from the menu located in: "
                 + " `"
-                + InspectorMenus.EventMenu 
+                + InspectorMenus.EventMenu
                 + "` "
-                + "and attach a listener to this event/s", 
+                + "and attach a listener to this event/s",
                 MessageType.Info);
         }
 
@@ -63,9 +58,9 @@ namespace EventBus.EventBus.Editor
 
         private static Func<ScriptableObject, bool> PredicateEvents()
         {
-            return e => e 
-                is Event<int> 
-                or Event<float> 
+            return e => e
+                is Event<int>
+                or Event<float>
                 or Event<bool>
                 or Event<string>;
         }
@@ -77,7 +72,7 @@ namespace EventBus.EventBus.Editor
                 case Event<int> intEvent:
                 {
                     _intInput = EditorGUILayout.IntField("Raise Value", _intInput);
-                    if(GUILayout.Button("Raise")) intEvent.Raise(_intInput);
+                    if (GUILayout.Button("Raise")) intEvent.Raise(_intInput);
                     EditorGUILayout.LabelField("Listeners", intEvent.ListenerCount.ToString());
                     DrawListenerDetails(intEvent);
                     break;
@@ -121,21 +116,32 @@ namespace EventBus.EventBus.Editor
 
                 //Registration and last invoke fields.
                 EditorGUILayout.LabelField($"Registered: {regTime:HH:mm:ss}");
-                EditorGUILayout.LabelField($"Last Invoked: {(lastTime == default ? "Never" : lastTime.ToString("HH:mm:ss"))}");
+                EditorGUILayout.LabelField(
+                    $"Last Invoked: {(lastTime == default ? "Never" : lastTime.ToString("HH:mm:ss"))}");
                 EditorGUILayout.Space();
             }
         }
 
         private static void DrawSelectListenerObject<T>(string name, IEventListener<T> listener)
         {
-            EditorGUILayout.LabelField(new GUIContent($"{name}","Listener object name"), EditorStyles.miniLabel);
-            
-            if (listener is not UnityEngine.Object unityObject || !GUILayout.Button(
+            EditorGUILayout.LabelField(new GUIContent($"{name}", "Listener object name"), EditorStyles.miniLabel);
+
+            if (listener is not Object unityObject || !GUILayout.Button(
                     new GUIContent("Select", "Select this listener in the inspector"),
                     GUILayout.Width(60))) return;
-            
+
             Selection.activeObject = unityObject;
             EditorGUIUtility.PingObject(unityObject);
         }
+
+        #region Fields
+
+        private Vector2 _scrollPosition;
+        private int _intInput;
+        private float _floatInput;
+        private bool _boolInput;
+        private string _stringInput;
+
+        #endregion
     }
 }

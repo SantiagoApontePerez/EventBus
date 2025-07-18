@@ -4,7 +4,9 @@ using UnityEngine;
 namespace EventBus.EventBus.Runtime.Events
 {
     [CreateAssetMenu(
-        fileName = "IntEvent.asset", 
+        fileName = "IntEvent.asset",
         menuName = InspectorMenus.EventMenu + "Int Event")]
-    public sealed class IntEvent : Event<int> { }
+    public sealed class IntEvent : Event<int>
+    {
+    }
 }
