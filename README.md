@@ -62,7 +62,7 @@ public class ScoreManager : MonoBehaviour
 
 **Window → EventBus → Event Debugger**
 
-<img width="405" height="287" alt="image" src="https://github.com/user-attachments/assets/fde3ac7e-8af3-4aa0-9559-51871beaa528" />
+<img width="403" height="285" alt="image" src="https://github.com/user-attachments/assets/6b1176e5-ffdd-4ff2-a82e-8344dfcba9fe" />
 
 The window lists each event asset with:
 
