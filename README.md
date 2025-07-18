@@ -66,12 +66,10 @@ public class ScoreManager : MonoBehaviour
 
 The window lists each event asset with:
 
-- Last Raised By: Object name that last triggered the event.
-- Last Raised At: Timestamp (HH:mm:ss).
 - Raise Value: Input field and Raise button to manually trigger.
 - Listeners: Active listener count.
 - Listener Details:
 - Name: GameObject or custom listener description.
+- Select button: Jump to the listener in the Inspector.
 - Registered: When the listener first subscribed.
 - Last Invoked: When it last received an event (or “Never”).
-- Select button: Jump to the listener in the Inspector.
